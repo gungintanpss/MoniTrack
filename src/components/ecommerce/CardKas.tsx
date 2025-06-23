@@ -24,9 +24,12 @@ export default function CardKas() {
           Rp. 134.768.987,32
         </div>
 
-        <div className="mt-6 text-sm text-right text-gray-700 dark:text-white">
+        <a
+          href="#"
+          className="mt-6 text-sm text-right text-gray-700 dark:text-white cursor-pointer block"
+          >
           Detail →
-        </div>
+        </a>
       </div>
 
       {/* Card 2 */}
@@ -50,9 +53,12 @@ export default function CardKas() {
           Rp. 134.768.987,32
         </div>
 
-        <div className="mt-6 text-sm text-right text-gray-700 dark:text-white">
+        <a
+          href="#"
+          className="mt-6 text-sm text-right text-gray-700 dark:text-white cursor-pointer block"
+          >
           Detail →
-        </div>
+        </a>
       </div>
 
       {/* Card 3 */}
@@ -76,9 +82,12 @@ export default function CardKas() {
           Rp. 134.768.987,32
         </div>
 
-        <div className="mt-6 text-sm text-right text-gray-700 dark:text-white">
+        <a
+          href="#"
+          className="mt-6 text-sm text-right text-gray-700 dark:text-white cursor-pointer block"
+          >
           Detail →
-        </div>
+        </a>
       </div>
 
       {/* Card 4 */}
@@ -102,9 +111,12 @@ export default function CardKas() {
           Rp. 134.768.987,32
         </div>
 
-        <div className="mt-6 text-sm text-right text-gray-700 dark:text-white">
+        <a
+          href="#"
+          className="mt-6 text-sm text-right text-gray-700 dark:text-white cursor-pointer block"
+          >
           Detail →
-        </div>
+        </a>
       </div>
     </div>
   );
