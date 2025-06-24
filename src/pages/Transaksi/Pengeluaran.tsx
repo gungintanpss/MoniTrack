@@ -4,21 +4,17 @@ import ComponentCard from "../../components/common/ComponentCard";
 import TabelPengeluaran from "../../components/tables/BasicTables/TabelPengeluaran";
 import Button from "../../components/ui/button/Button";
 import Input from "../../components/form/input/InputField";
-import Select from "../../components/form/Select";
 import DatePicker from "../../components/form/date-picker";
 import { PlusIcon } from "../../icons";
+import AddDataPemasukan from "../../components/form/AddDataTransaksi";
 
 export default function PengeluaranPage() {
   const [search, setSearch] = useState("");
-  const filterOptions = [
-    { value: "semua", label: "Semua" },
-    { value: "lunas", label: "Lunas" },
-    { value: "belum-lunas", label: "Belum Lunas" },
-  ];
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <PageMeta title="Manajemen Piutang" description="Dashboard Piutang" />
+      <PageMeta title="Pengeluaran" description="Transaksi Pengeluaran" />
 
       {/* Header: Judul & Tombol Tambah */}
       <div className="flex items-center justify-between mb-4">
@@ -30,12 +26,14 @@ export default function PengeluaranPage() {
           variant="primary"
           startIcon={<PlusIcon />}
           className="px-4 py-2"
+          onClick={() => setShowModal(true)}
         >
           Tambah
         </Button>
       </div>
 
       {/* Table */}
+      <AddDataPemasukan isOpen={showModal} onClose={() => setShowModal(false)} />
       <div className="space-y-6">
         <ComponentCard title="">
           {/* Filter Section */}
@@ -63,33 +61,6 @@ export default function PengeluaranPage() {
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            {/* Dropdown Filter Status dengan Down Arrow Icon */}
-            <div className="relative w-full max-w-[180px]">
-              <Select
-                options={filterOptions}
-                placeholder="Filter"
-                className="text-[#3A3F63] appearance-none pr-10"
-                onChange={(val) => console.log("Filter selected:", val)}
-              />
-              <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#3A3F63]">
-                {/* Down Arrow Icon (inline SVG) */}
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
                   />
                 </svg>
               </div>
