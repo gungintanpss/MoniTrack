@@ -6,6 +6,7 @@ import Label from "../Label";
 export default function TextAreaInput() {
   const [message, setMessage] = useState("");
   const [messageTwo, setMessageTwo] = useState("");
+
   return (
     <ComponentCard title="Textarea input field">
       <div className="space-y-6">
@@ -22,7 +23,12 @@ export default function TextAreaInput() {
         {/* Disabled TextArea */}
         <div>
           <Label>Description</Label>
-          <TextArea rows={6} disabled />
+          <TextArea
+            value=""
+            onChange={() => {}}
+            rows={7}
+            disabled
+          />
         </div>
 
         {/* Error TextArea */}
