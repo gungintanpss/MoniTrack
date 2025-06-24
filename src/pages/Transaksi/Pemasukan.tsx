@@ -4,21 +4,17 @@ import ComponentCard from "../../components/common/ComponentCard";
 import TabelPemasukan from "../../components/tables/BasicTables/TabelPemasukan";
 import Button from "../../components/ui/button/Button";
 import Input from "../../components/form/input/InputField";
-import Select from "../../components/form/Select";
 import DatePicker from "../../components/form/date-picker";
 import { PlusIcon } from "../../icons";
+import TambahPemasukan from "../../components/form/TambahPemasukan";
 
 export default function PemasukanPage() {
   const [search, setSearch] = useState("");
-  const filterOptions = [
-    { value: "semua", label: "Semua" },
-    { value: "lunas", label: "Lunas" },
-    { value: "belum-lunas", label: "Belum Lunas" },
-  ];
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <PageMeta title="Manajemen Piutang" description="Dashboard Piutang" />
+      <PageMeta title="Pemasukan" description="Dashboard Transaksi" />
 
       {/* Header: Judul & Tombol Tambah */}
       <div className="flex items-center justify-between mb-4">
@@ -30,6 +26,7 @@ export default function PemasukanPage() {
           variant="primary"
           startIcon={<PlusIcon />}
           className="px-4 py-2"
+          onClick={() => setShowModal(true)}
         >
           Tambah
         </Button>
@@ -68,33 +65,6 @@ export default function PemasukanPage() {
               </div>
             </div>
 
-            {/* Dropdown Filter Status dengan Down Arrow Icon */}
-            <div className="relative w-full max-w-[180px]">
-              <Select
-                options={filterOptions}
-                placeholder="Filter"
-                className="text-[#3A3F63] appearance-none pr-10"
-                onChange={(val) => console.log("Filter selected:", val)}
-              />
-              <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#3A3F63]">
-                {/* Down Arrow Icon (inline SVG) */}
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-            </div>
-
             {/* Date Picker */}
             <div className="w-full max-w-[220px]">
               <DatePicker
@@ -107,10 +77,13 @@ export default function PemasukanPage() {
             </div>
           </div>
 
-          {/* Table */}
+          {/* Tabel */}
           <TabelPemasukan />
         </ComponentCard>
       </div>
+
+      {/* Modal Tambah Transaksi */}
+      <TambahPemasukan isOpen={showModal} onClose={() => setShowModal(false)} />
     </>
   );
 }
