@@ -20,6 +20,8 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import Piutang from "./pages/PiutangUtang/Piutang";
 import Utang from "./pages/PiutangUtang/Utang";
+import Pengeluaran from "./pages/Transaksi/Pengeluaran";
+import Pemasukan from "./pages/Transaksi/Pemasukan";
 
 export default function App() {
   return (
@@ -57,7 +59,11 @@ export default function App() {
             {/* Piutang & Utang */}
             <Route path="/piutang" element={<Piutang />} />
             <Route path="/utang" element={<Utang />} />
-            
+
+            {/* Transaksi */}
+            <Route path="/pengeluaran" element={<Pengeluaran />} />
+            <Route path="/pemasukan" element={<Pemasukan />} />
+
           </Route>
 
           {/* Auth Layout */}

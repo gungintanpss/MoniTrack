@@ -29,8 +29,8 @@ const navItems: NavItem[] = [
     icon: <ListIcon />,
     name: "Transaksi",
     subItems: [
-      { name: "Pemasukan", path: "/form-elements" },
-      { name: "Pengeluaran", path: "/form-elements" },
+      { name: "Pemasukan", path: "/pemasukan" },
+      { name: "Pengeluaran", path: "/pengeluaran" },
     ],
   },
   {
