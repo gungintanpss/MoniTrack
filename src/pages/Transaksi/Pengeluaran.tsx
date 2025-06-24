@@ -6,13 +6,15 @@ import Button from "../../components/ui/button/Button";
 import Input from "../../components/form/input/InputField";
 import DatePicker from "../../components/form/date-picker";
 import { PlusIcon } from "../../icons";
+import AddDataTransaksi from "../../components/form/AddDataTransaksi";
 
 export default function PengeluaranPage() {
   const [search, setSearch] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <PageMeta title="Pengeluaran" description="Dashboard Transaksi" />
+      <PageMeta title="Pengeluaran" description="Transaksi Pengeluaran" />
 
       {/* Header: Judul & Tombol Tambah */}
       <div className="flex items-center justify-between mb-4">
@@ -24,6 +26,7 @@ export default function PengeluaranPage() {
           variant="primary"
           startIcon={<PlusIcon />}
           className="px-4 py-2"
+          onClick={() => setShowModal(true)}
         >
           Tambah
         </Button>
@@ -77,6 +80,8 @@ export default function PengeluaranPage() {
           {/* Table */}
           <TabelPengeluaran />
         </ComponentCard>
+        {/* Modal Tambah Transaksi */}
+        <AddDataTransaksi isOpen={showModal} onClose={() => setShowModal(false)} />
       </div>
     </>
   );

@@ -6,7 +6,7 @@ import Button from "../../components/ui/button/Button";
 import Input from "../../components/form/input/InputField";
 import DatePicker from "../../components/form/date-picker";
 import { PlusIcon } from "../../icons";
-import TambahPemasukan from "../../components/form/TambahPemasukan";
+import AddDataTransaksi from "../../components/form/AddDataTransaksi";
 
 export default function PemasukanPage() {
   const [search, setSearch] = useState("");
@@ -14,7 +14,7 @@ export default function PemasukanPage() {
 
   return (
     <>
-      <PageMeta title="Pemasukan" description="Dashboard Transaksi" />
+      <PageMeta title="Pemasukan" description="Transaksi Pemasukan" />
 
       {/* Header: Judul & Tombol Tambah */}
       <div className="flex items-center justify-between mb-4">
@@ -83,7 +83,7 @@ export default function PemasukanPage() {
       </div>
 
       {/* Modal Tambah Transaksi */}
-      <TambahPemasukan isOpen={showModal} onClose={() => setShowModal(false)} />
+    <AddDataTransaksi isOpen={showModal} onClose={() => setShowModal(false)} />
     </>
   );
 }
