@@ -10,6 +10,11 @@ import { PlusIcon } from "../../icons";
 
 export default function UtangPage() {
   const [search, setSearch] = useState("");
+  const [isOpen, setIsOpen] = useState(false); 
+
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
+
   const filterOptions = [
     { value: "semua", label: "Semua" },
     { value: "lunas", label: "Lunas" },
@@ -19,6 +24,24 @@ export default function UtangPage() {
   return (
     <>
       <PageMeta title="Manajemen Utang" description="Dashboard Utang" />
+
+      {/* Modal */}
+      {isOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="rounded-xl bg-white p-6 shadow-2xl w-[90%] max-w-md">
+            <h2 className="text-xl font-bold mb-4">Form Tambah Utang</h2>
+            <p className="mb-6 text-gray-700">
+              Konten popup bisa berupa formulir tambah data utang.
+            </p>
+            <button
+              onClick={closeModal}
+              className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+            >
+              Tutup
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Header: Judul & Tombol Tambah */}
       <div className="flex items-center justify-between mb-4">
@@ -30,6 +53,7 @@ export default function UtangPage() {
           variant="primary"
           startIcon={<PlusIcon />}
           className="px-4 py-2"
+          onClick={openModal}
         >
           Tambah
         </Button>
@@ -40,7 +64,7 @@ export default function UtangPage() {
         <ComponentCard title="">
           {/* Filter Section */}
           <div className="flex flex-wrap gap-4 items-center justify-start mb-6">
-            {/* Input Pencarian Invoice dengan Search Icon */}
+            {/* Input Pencarian Invoice */}
             <div className="relative w-full max-w-sm">
               <Input
                 type="text"
@@ -50,7 +74,6 @@ export default function UtangPage() {
                 className="pl-10 text-[#3A3F63]"
               />
               <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#3A3F63]">
-                {/* Search Icon (inline SVG) */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5"
@@ -68,7 +91,7 @@ export default function UtangPage() {
               </div>
             </div>
 
-            {/* Dropdown Filter Status dengan Down Arrow Icon */}
+            {/* Dropdown Filter Status */}
             <div className="relative w-full max-w-[180px]">
               <Select
                 options={filterOptions}
@@ -77,7 +100,6 @@ export default function UtangPage() {
                 onChange={(val) => console.log("Filter selected:", val)}
               />
               <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#3A3F63]">
-                {/* Down Arrow Icon (inline SVG) */}
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -107,7 +129,7 @@ export default function UtangPage() {
             </div>
           </div>
 
-          {/* Table */}
+          {/* Table Utang */}
           <TabelUtang />
         </ComponentCard>
       </div>
