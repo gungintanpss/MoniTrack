@@ -31,7 +31,7 @@ export default function UtangPage() {
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div className="rounded-xl bg-white p-6 shadow-2xl w-full max-w-3xl">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-[#3A3F63]">Tambah Utang</h2>
+              <h2 className="text-2xl font-bold text-[#3A3F63] mx-auto">Tambah Utang</h2>
               <button onClick={closeModal} className="text-gray-500 hover:text-gray-700 text-xl font-bold">
                 &times;
               </button>

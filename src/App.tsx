@@ -22,6 +22,7 @@ import Piutang from "./pages/PiutangUtang/Piutang";
 import Utang from "./pages/PiutangUtang/Utang";
 import Pengeluaran from "./pages/Transaksi/Pengeluaran";
 import Pemasukan from "./pages/Transaksi/Pemasukan";
+import Laporan from "./pages/Laporan";
 
 export default function App() {
   return (
@@ -63,6 +64,9 @@ export default function App() {
             {/* Transaksi */}
             <Route path="/pengeluaran" element={<Pengeluaran />} />
             <Route path="/pemasukan" element={<Pemasukan />} />
+
+            {/* Laporan */}
+            <Route path="/laporan" element={<Laporan />} />
 
           </Route>
 

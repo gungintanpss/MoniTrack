@@ -285,7 +285,7 @@ export default function TabelUtang() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
           <div className="rounded-xl bg-white p-6 shadow-2xl w-full max-w-3xl">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-[#3A3F63]">Detail Utang</h2>
+              <h2 className="text-2xl font-bold text-[#3A3F63] mx-auto">Detail Utang</h2>
               <button onClick={closeAllModals} className="text-gray-500 hover:text-gray-700 text-xl font-bold">
                 &times;
               </button>
@@ -340,7 +340,7 @@ export default function TabelUtang() {
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
           <div className="bg-white rounded-xl p-6 w-full max-w-4xl shadow-xl">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-[#3A3F63]">Edit Utang</h2>
+              <h2 className="text-2xl font-bold text-[#3A3F63] mx-auto">Edit Utang</h2>
               <button onClick={closeAllModals} className="text-gray-500 text-xl font-bold">&times;</button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm text-[#3A3F63]">
