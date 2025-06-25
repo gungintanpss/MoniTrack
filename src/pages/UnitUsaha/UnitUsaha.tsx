@@ -1,11 +1,11 @@
 import { useState } from "react";
-import CardUnit from "../../components/ecommerce/CardUnit";
+import CardUnit from "../../components/card/CardUnit";
 import PageMeta from "../../components/common/PageMeta";
 import { PlusIcon } from "../../icons";
 import Button from "../../components/ui/button/Button";
 import AddUnitUsahaModal from "../../components/form/AddUnitUsahaModal"; 
 
-export default function BasicTables() {
+export default function UnitUsaha() {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => setIsOpen(true);
@@ -18,7 +18,6 @@ export default function BasicTables() {
         description="This is React.js Ecommerce Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
       />
 
-      {/* ✅ Tambahkan Modal Tambah Unit Usaha */}
       <AddUnitUsahaModal isOpen={isOpen} onClose={closeModal} />
 
       {/* Konten Utama */}

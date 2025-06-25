@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
   {
     icon: <BoxCubeIcon />,
     name: "Kas & Rekening",
-    path: "/calendar",
+    path: "/manajemen-kas", // Disesuaikan
   },
   {
     icon: <UserCircleIcon />,
@@ -49,14 +49,15 @@ const navItems: NavItem[] = [
   {
     icon: <TableIcon />,
     name: "Unit Usaha",
-    path: "/basic-tables",
+    path: "/unit-usaha", // Disesuaikan
   },
   {
     icon: <PieChartIcon />,
     name: "Laporan",
-    path: "/bar-chart",
+    path: "/bar-chart", // Bisa juga ditambahkan menu LineChart jika perlu
   },
 ];
+
 
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();

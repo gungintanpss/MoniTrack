@@ -1,9 +1,9 @@
 import { useState } from "react";
-import CardKas from "../components/ecommerce/CardKas";
-import PageMeta from "../components/common/PageMeta";
-import { PlusIcon } from "../icons";
-import Button from "../components/ui/button/Button";
-import AddRekeningModal from "../components/form/AddRekeningModal"; 
+import CardKas from "../../components/card/CardKas";
+import PageMeta from "../../components/common/PageMeta";
+import { PlusIcon } from "../../icons";
+import Button from "../../components/ui/button/Button";
+import AddRekeningModal from "../../components/form/AddRekeningModal"; 
 
 export default function Calendar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,6 @@ export default function Calendar() {
         description="This is React.js Ecommerce Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
       />
 
-      {/* ✅ Modal Tambah Rekening */}
       <AddRekeningModal isOpen={isOpen} onClose={closeModal} />
 
       {/* Konten Utama */}
