@@ -1,10 +1,9 @@
-import { useParams, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import CardUnitDetail from "../../components/card/CardUnitUsaha";
 import TabelKeuanganUnit from "../../components/tables/BasicTables/TabelKeuanganUnit";
 import Button from "../../components/ui/button/Button";
 
 export default function DetailUnit() {
-  const { id } = useParams(); // Ambil ID dari URL
   const navigate = useNavigate(); // Untuk kembali
 
   return (
