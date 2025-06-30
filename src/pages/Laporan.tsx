@@ -6,7 +6,6 @@ import Button from "../components/ui/button/Button";
 import Input from "../components/form/input/InputField";
 import Select from "../components/form/Select";
 import DatePicker from "../components/form/date-picker";
-import { PlusIcon } from "../icons";
 
 export default function LaporanPage() {
   const [search, setSearch] = useState("");
@@ -125,7 +124,7 @@ export default function LaporanPage() {
                     <DatePicker
                     id="export-date"
                     placeholder="Pilih tanggal laporan"
-                    onChange={(dates, currentDateString) =>
+                    onChange={(currentDateString) =>
                         console.log("Tanggal dipilih:", currentDateString)
                     }
                     />
