@@ -8,13 +8,20 @@ import {
 } from "../../ui/table";
 import { Eye, Edit, Trash2 } from "lucide-react";
 
-interface PemasukanData {
+export interface PemasukanData {
   tanggal: string;
   kategori: string;
   keterangan: string;
   jumlah: string;
   unitUsaha: string;
   sumberDana: string;
+  invoice?: string;
+  bukti?: string;
+}
+
+interface Props {
+  onDelete: (id: string) => void;
+  onEdit: (data: PemasukanData) => void; // Tambahkan
 }
 
 const tableData: PemasukanData[] = [
@@ -102,7 +109,7 @@ const tableData: PemasukanData[] = [
 
 const ITEMS_PER_PAGE = 10;
 
-export default function TabelPemasukan() {
+export default function TabelPemasukan({ onDelete, onEdit }: Props) {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(tableData.length / ITEMS_PER_PAGE);
 
@@ -130,10 +137,7 @@ export default function TabelPemasukan() {
             {i}
           </button>
         );
-      } else if (
-        i === currentPage - 2 ||
-        i === currentPage + 2
-      ) {
+      } else if (i === currentPage - 2 || i === currentPage + 2) {
         pages.push(
           <span key={i} className="px-2 text-gray-400">
             ...
@@ -148,76 +152,86 @@ export default function TabelPemasukan() {
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="max-w-full overflow-x-auto">
         <Table>
-        <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
-        <TableRow>
-            <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
-            Tanggal
-            </TableCell>
-            <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
-            Kategori
-            </TableCell>
-            <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
-            Keterangan
-            </TableCell>
-            <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
-            Jumlah
-            </TableCell>
-            <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
-            Unit Usaha
-            </TableCell>
-            <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
-            Sumber Dana
-            </TableCell>
-            <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
-            Aksi
-            </TableCell>
-        </TableRow>
-        </TableHeader>
-
-
-        <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-        {currentData.map((item, idx) => (
-            <TableRow key={idx}>
-            <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                {item.tanggal}
-            </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                {item.kategori}
-            </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                {item.keterangan}
-            </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                {item.jumlah}
-            </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                {item.unitUsaha}
-            </TableCell>
-            <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                {item.sumberDana}
-            </TableCell>
-            <TableCell className="px-5 py-4 text-start">
-                <div className="flex items-center gap-2">
-                <button title="Lihat">
-                    <Eye className="w-4 h-4 text-gray-600 hover:text-blue-500 dark:text-gray-300" />
-                </button>
-                <button title="Edit">
-                    <Edit className="w-4 h-4 text-gray-600 hover:text-yellow-500 dark:text-gray-300" />
-                </button>
-                <button title="Hapus">
-                    <Trash2 className="w-4 h-4 text-red-600 hover:text-red-700 dark:text-red-400" />
-                </button>
-                </div>
-            </TableCell>
+          <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
+            <TableRow>
+              <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
+                Tanggal
+              </TableCell>
+              <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
+                Kategori
+              </TableCell>
+              <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
+                Keterangan
+              </TableCell>
+              <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
+                Jumlah
+              </TableCell>
+              <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
+                Unit Usaha
+              </TableCell>
+              <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
+                Sumber Dana
+              </TableCell>
+              <TableCell className="px-5 py-3 font-medium text-start text-theme-xs text-gray-500 dark:text-gray-400">
+                Aksi
+              </TableCell>
             </TableRow>
-        ))}
-        </TableBody>
+          </TableHeader>
+
+          <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
+            {currentData.map((item, idx) => {
+              const actualIndex = startIndex + idx; // Index sebenarnya dalam array original
+              return (
+                <TableRow key={actualIndex}>
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {item.tanggal}
+                  </TableCell>
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {item.kategori}
+                  </TableCell>
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {item.keterangan}
+                  </TableCell>
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {item.jumlah}
+                  </TableCell>
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {item.unitUsaha}
+                  </TableCell>
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {item.sumberDana}
+                  </TableCell>
+                  <TableCell className="px-5 py-4 text-start">
+                    <div className="flex items-center gap-2">
+                      <button title="Lihat">
+                        <Eye className="w-4 h-4 text-gray-600 hover:text-blue-500 dark:text-gray-300" />
+                      </button>
+                      <button
+                        title="Edit"
+                        onClick={() => {
+                          console.log(`Edit baris ke-${actualIndex + 1}:`, item);
+                          console.log('currentPage:', currentPage, 'startIndex:', startIndex, 'idx:', idx);
+                          onEdit(item);
+                        }}
+                      >
+                        <Edit className="w-4 h-4 text-gray-600 hover:text-yellow-500 dark:text-gray-300" />
+                      </button>
+                      <button
+                        title="Hapus"
+                        onClick={() => onDelete(actualIndex.toString())}
+                      >
+                        <Trash2 className="w-4 h-4 text-red-600 hover:text-red-700 dark:text-red-400" />
+                      </button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
         </Table>
       </div>
 
-      {/* Pagination */}
       <div className="flex items-center justify-between px-5 py-4 border-t border-gray-100 dark:border-white/[0.05]">
-        {/* Pagination Controls */}
         <div className="flex items-center space-x-1">
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -237,8 +251,6 @@ export default function TabelPemasukan() {
             &rarr;
           </button>
         </div>
-
-        {/* Total Results */}
         <span className="text-sm text-gray-500 dark:text-gray-400">
           {tableData.length} Results
         </span>

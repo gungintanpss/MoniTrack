@@ -1,16 +1,43 @@
 import { useState } from "react";
 import PageMeta from "../../components/common/PageMeta";
 import ComponentCard from "../../components/common/ComponentCard";
-import TabelPemasukan from "../../components/tables/BasicTables/TabelPemasukan";
+import TabelPemasukan, { PemasukanData } from "../../components/tables/BasicTables/TabelPemasukan";
 import Button from "../../components/ui/button/Button";
 import Input from "../../components/form/input/InputField";
 import DatePicker from "../../components/form/date-picker";
 import { PlusIcon } from "../../icons";
 import AddDataTransaksi from "../../components/form/AddDataTransaksi";
+import HapusTransaksi from "../../components/form/HapusTransaksi";
+import EditDataPemasukan from "../../components/form/EditDataPemasukan";
 
 export default function PemasukanPage() {
   const [search, setSearch] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedTransactionId, setSelectedTransactionId] = useState<string | null>(null);
+
+const handleDelete = (id: string) => {
+  setSelectedTransactionId(id);
+  setShowDeleteModal(true);
+};
+
+const confirmDelete = () => {
+  if (selectedTransactionId !== null) {
+    console.log("Menghapus transaksi dengan ID:", selectedTransactionId);
+    // TODO: Hapus transaksi dari state atau API
+    setShowDeleteModal(false);
+    setSelectedTransactionId(null);
+  }
+};
+
+const [showEditModal, setShowEditModal] = useState(false);
+const [editData, setEditData] = useState<PemasukanData | null>(null);
+
+const handleEdit = (data: PemasukanData) => {
+  setEditData(data); 
+  setShowEditModal(true);
+};
+
 
   return (
     <>
@@ -78,12 +105,29 @@ export default function PemasukanPage() {
           </div>
 
           {/* Tabel */}
-          <TabelPemasukan />
+          <TabelPemasukan onDelete={handleDelete} onEdit={handleEdit} />
         </ComponentCard>
       </div>
 
       {/* Modal Tambah Transaksi */}
-    <AddDataTransaksi isOpen={showModal} onClose={() => setShowModal(false)} />
+      <AddDataTransaksi isOpen={showModal} onClose={() => setShowModal(false)} />
+
+      {/* Modal Hapus Transaksi */}
+      <HapusTransaksi
+        isOpen={showDeleteModal}
+        onConfirm={confirmDelete}
+        onCancel={() => setShowDeleteModal(false)}
+      />
+
+      {/* Modal Edit Transaksi */}
+      {editData && (
+        <EditDataPemasukan
+          isOpen={showEditModal}
+          onClose={() => setShowEditModal(false)}
+          data={editData}
+        />
+      )}
+
     </>
   );
 }
