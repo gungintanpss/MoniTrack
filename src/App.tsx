@@ -22,6 +22,7 @@ import Utang from "./pages/PiutangUtang/Utang";
 import Pengeluaran from "./pages/Transaksi/Pengeluaran";
 import Pemasukan from "./pages/Transaksi/Pemasukan";
 import DetailUnit from "./pages/UnitUsaha/DetailUnit";
+import DetailKas from "./pages/ManajemenKas/DetailKas";
 
 export default function App() {
   return (
@@ -36,6 +37,8 @@ export default function App() {
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/manajemen-kas" element={<ManajemenKas />} />
+            <Route path="/manajemen-kas/detail/:id" element={<DetailKas />} />
+
 
             {/* Forms */}
             <Route path="/form-elements" element={<FormElements />} />

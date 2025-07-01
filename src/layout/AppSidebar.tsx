@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
   {
     icon: <BoxCubeIcon />,
     name: "Kas & Rekening",
-    path: "/manajemen-kas", // Disesuaikan
+    path: "/manajemen-kas",
   },
   {
     icon: <UserCircleIcon />,
@@ -49,7 +49,7 @@ const navItems: NavItem[] = [
   {
     icon: <TableIcon />,
     name: "Unit Usaha",
-    path: "/unit-usaha", // Disesuaikan
+    path: "/unit-usaha", 
   },
   {
     icon: <PieChartIcon />,
