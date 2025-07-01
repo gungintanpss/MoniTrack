@@ -10,7 +10,8 @@ import { PlusIcon } from "../../icons";
 
 export default function UtangPage() {
   const [search, setSearch] = useState("");
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false); // ✅ tambahan modal konfirmasi
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -25,20 +26,110 @@ export default function UtangPage() {
     <>
       <PageMeta title="Manajemen Utang" description="Dashboard Utang" />
 
-      {/* Modal */}
+      {/* Modal Tambah Utang */}
       {isOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="rounded-xl bg-white p-6 shadow-2xl w-[90%] max-w-md">
-            <h2 className="text-xl font-bold mb-4">Form Tambah Utang</h2>
-            <p className="mb-6 text-gray-700">
-              Konten popup bisa berupa formulir tambah data utang.
+          <div className="rounded-xl bg-white p-6 shadow-2xl w-full max-w-3xl">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold text-[#3A3F63] mx-auto">Tambah Utang</h2>
+              <button onClick={closeModal} className="text-gray-500 hover:text-gray-700 text-xl font-bold">
+                &times;
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div>
+                <label className="block mb-1 text-sm text-[#3A3F63]">Nama Supplier</label>
+                <Input type="text" placeholder="Masukkan nama supplier" />
+              </div>
+
+              <div>
+                <label className="block mb-1 text-sm text-[#3A3F63]">Tanggal Jatuh Tempo</label>
+                <DatePicker id="due-date" placeholder="Pilih tanggal jatuh tempo" />
+              </div>
+
+              <div>
+                <label className="block mb-1 text-sm text-[#3A3F63]">Tanggal Terbit Tagihan</label>
+                <DatePicker id="invoice-date" placeholder="Pilih tanggal terbit tagihan" />
+              </div>
+
+              <div>
+                <label className="block mb-1 text-sm text-[#3A3F63]">Keterangan</label>
+                <Input type="text" placeholder="Masukkan keterangan" />
+              </div>
+
+              <div>
+                <label className="block mb-1 text-sm text-[#3A3F63]">Nomor Tagihan</label>
+                <Input type="text" placeholder="Masukkan nomor tagihan" />
+              </div>
+
+              <div>
+                <label className="block mb-1 text-sm text-[#3A3F63]">Status</label>
+                <Select
+                  options={filterOptions}
+                  placeholder="Pilih Status"
+                  className="text-[#3A3F63] appearance-none pr-10"
+                  onChange={(val) => console.log("Filter selected:", val)}
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="block mb-1 text-sm text-[#3A3F63]">Jumlah Utang</label>
+                <Input type="number" placeholder="Masukkan jumlah utang" />
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={closeModal}
+                className="rounded-full px-6 py-2 bg-white text-[#3A3F63] border hover:bg-gray-100"
+              >
+                Batal
+              </button>
+              <button
+                onClick={() => setIsConfirmOpen(true)} // ✅ buka modal konfirmasi
+                className="rounded-full px-6 py-2 bg-blue-500 text-white hover:bg-blue-600"
+              >
+                Simpan
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ✅ Modal Konfirmasi Simpan */}
+      {isConfirmOpen && (
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="bg-white rounded-xl p-6 w-full max-w-sm text-center shadow-2xl">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold text-[#3A3F63] mx-auto">Simpan Utang</h3>
+              <button
+                onClick={() => setIsConfirmOpen(false)}
+                className="text-gray-500 hover:text-gray-700 text-xl font-bold"
+              >
+                &times;
+              </button>
+            </div>
+            <p className="mb-6 text-[#3A3F63]">
+              Apakah anda yakin untuk menambahkan utang ini?
             </p>
-            <button
-              onClick={closeModal}
-              className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
-            >
-              Tutup
-            </button>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => {
+                  setIsConfirmOpen(false);
+                  setIsOpen(false); // ✅ tutup form & modal konfirmasi
+                }}
+                className="rounded-full px-6 py-2 bg-blue-500 text-white hover:bg-blue-600"
+              >
+                Simpan
+              </button>
+              <button
+                onClick={() => setIsConfirmOpen(false)}
+                className="rounded-full px-6 py-2 bg-white text-blue-600 border hover:bg-gray-100"
+              >
+                Batal
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -62,9 +153,7 @@ export default function UtangPage() {
       {/* Table */}
       <div className="space-y-6">
         <ComponentCard title="">
-          {/* Filter Section */}
           <div className="flex flex-wrap gap-4 items-center justify-start mb-6">
-            {/* Input Pencarian Invoice */}
             <div className="relative w-full max-w-sm">
               <Input
                 type="text"
@@ -91,7 +180,6 @@ export default function UtangPage() {
               </div>
             </div>
 
-            {/* Dropdown Filter Status */}
             <div className="relative w-full max-w-[180px]">
               <Select
                 options={filterOptions}
@@ -117,7 +205,6 @@ export default function UtangPage() {
               </div>
             </div>
 
-            {/* Date Picker */}
             <div className="w-full max-w-[220px]">
               <DatePicker
                 id="filter-date"
@@ -129,7 +216,6 @@ export default function UtangPage() {
             </div>
           </div>
 
-          {/* Table Utang */}
           <TabelUtang />
         </ComponentCard>
       </div>

@@ -54,7 +54,7 @@ const navItems: NavItem[] = [
   {
     icon: <PieChartIcon />,
     name: "Laporan",
-    path: "/bar-chart",
+    path: "/laporan",
   },
 ];
 
