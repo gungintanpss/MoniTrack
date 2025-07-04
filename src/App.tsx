@@ -11,10 +11,9 @@ import Avatars from "./pages/UiElements/Avatars";
 import Buttons from "./pages/UiElements/Buttons";
 import LineChart from "./pages/Charts/LineChart";
 import BarChart from "./pages/Charts/BarChart";
-import Calendar from "./pages/Calendar";
-import BasicTables from "./pages/Tables/BasicTables";
+import ManajemenKas from "./pages/ManajemenKas/ManajemenKas";
+import UnitUsaha from "./pages/UnitUsaha/UnitUsaha";
 import FormElements from "./pages/Forms/FormElements";
-import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
@@ -23,6 +22,8 @@ import Utang from "./pages/PiutangUtang/Utang";
 import Pengeluaran from "./pages/Transaksi/Pengeluaran";
 import Pemasukan from "./pages/Transaksi/Pemasukan";
 import Laporan from "./pages/Laporan";
+import DetailUnit from "./pages/UnitUsaha/DetailUnit";
+import DetailKas from "./pages/ManajemenKas/DetailKas";
 
 export default function App() {
   return (
@@ -36,14 +37,16 @@ export default function App() {
 
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
-            <Route path="/calendar" element={<Calendar />} />
-            <Route path="/blank" element={<Blank />} />
+            <Route path="/manajemen-kas" element={<ManajemenKas />} />
+            <Route path="/manajemen-kas/detail/:id" element={<DetailKas />} />
+
 
             {/* Forms */}
             <Route path="/form-elements" element={<FormElements />} />
 
-            {/* Tables */}
-            <Route path="/basic-tables" element={<BasicTables />} />
+            {/* Unit Usaha */}
+            <Route path="/unit-usaha" element={<UnitUsaha />} />
+            <Route path="/unit-usaha/detail/:id" element={<DetailUnit />} />
 
             {/* Ui Elements */}
             <Route path="/alerts" element={<Alerts />} />

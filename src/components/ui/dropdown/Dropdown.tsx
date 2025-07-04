@@ -1,4 +1,4 @@
-import type React from "react";
+import type { FC} from "react";
 import { useEffect, useRef } from "react";
 
 interface DropdownProps {
@@ -8,7 +8,7 @@ interface DropdownProps {
   className?: string;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({
+export const Dropdown: FC<DropdownProps> = ({
   isOpen,
   onClose,
   children,

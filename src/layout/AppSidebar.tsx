@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
   {
     icon: <BoxCubeIcon />,
     name: "Kas & Rekening",
-    path: "/calendar",
+    path: "/manajemen-kas",
   },
   {
     icon: <UserCircleIcon />,
@@ -49,7 +49,7 @@ const navItems: NavItem[] = [
   {
     icon: <TableIcon />,
     name: "Unit Usaha",
-    path: "/basic-tables",
+    path: "/unit-usaha", 
   },
   {
     icon: <PieChartIcon />,
@@ -57,6 +57,7 @@ const navItems: NavItem[] = [
     path: "/laporan",
   },
 ];
+
 
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();

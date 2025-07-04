@@ -1,5 +1,5 @@
-import EcommerceMetrics from "../../components/ecommerce/EcommerceMetrics";
-import StatisticsChart from "../../components/ecommerce/StatisticsChart";
+import EcommerceMetrics from "../../components/card/CardDashboard";
+import StatisticsChart from "../../components/card/StatisticsChart";
 import PageMeta from "../../components/common/PageMeta";
 
 export default function Home() {
