@@ -94,7 +94,7 @@ export default function CardKas() {
 
           <button
             onClick={() => goToDetail(kas.id)}
-            className="mt-6 text-sm text-right text-gray-700 dark:text-white cursor-pointer block ml-auto"
+            className="mt-6 text-sm text-right text-gray-700 dark:text-white cursor-pointer block ml-auto hover:underline"
           >
             Detail →
           </button>

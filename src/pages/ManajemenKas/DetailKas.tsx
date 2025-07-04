@@ -1,65 +1,129 @@
 import { useNavigate, useParams } from "react-router";
-import { Trash2Icon } from "lucide-react";
+import { useState } from "react";
+import { Trash2Icon, Edit } from "lucide-react";
 import Button from "../../components/ui/button/Button";
 import TabelKasDetail from "../../components/tables/BasicTables/TabelKasDetail";
+import TransferDanaForm from "../../components/form/TransferDanaForm";
+import EditRekeningForm from "../../components/form/EditRekeningForm";
+import DeleteConfirmationForm from "../../components/form/DeleteConfirmationForm";
+import { PlusIcon } from "../../icons";
 
 export default function DetailKas() {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const [modalType, setModalType] = useState<"transfer" | "edit" | null>(null);
+  const [showDelete, setShowDelete] = useState(false);
+
+  const openModal = (type: "transfer" | "edit") => setModalType(type);
+  const closeModal = () => setModalType(null);
+
+  const rekeningData = {
+    nama: "Lorem ipsum",
+    jenis: "Bank BCA",
+    nomor: "0879898989898989",
+    saldo: "Rp 1.000.000,00",
+    deskripsi:
+      "Rekening untuk kebutuhan operasional perusahaan dan transaksi harian.",
+  };
+
+  const handleDelete = () => {
+    console.log("Rekening berhasil dihapus!");
+    setShowDelete(false);
+  };
+
   return (
-    <div className="space-y-6 px-4 md:px-8 pt-4 pb-10">
-      {/* Header + Tombol Transfer Dana */}
-      <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
-          MANAJEMEN KAS & REKENING
-        </h2>
+    <>
+      <div className="px-4 md:px-10 py-8 space-y-6">
+        {/* Header + Tombol Transfer Dana */}
+        <div className="flex justify-between items-center">
+          <h2 className="text-lg font-semibold text-[#3A3F63]">
+            MANAJEMEN KAS & REKENING
+          </h2>
 
-        <Button size="sm" variant="primary" className="px-4 py-2">
-          Transfer Dana
-        </Button>
-      </div>
+          <Button
+            size="sm"
+            variant="primary"
+            startIcon={<PlusIcon />}
+            className="px-4 py-2"
+            onClick={() => openModal("transfer")}
+          >
+            Transfer Dana
+          </Button>
+        </div>
 
-      {/* Layout dengan Card di kiri dan Tabel di kanan */}
-      <div className="flex gap-6">
-        {/* Informasi Kas - Sisi Kiri */}
-        <div className="w-80 flex-shrink-0">
-          <div className="relative rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-white/[0.03]">
-            <div className="text-lg font-bold text-gray-800 mb-4">
-              Ni Lorem Ipsum
+        {/* Layout dengan grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Kartu informasi kas */}
+          <div className="md:col-span-1">
+            <div className="relative rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+              <div className="text-lg font-bold text-gray-800 mb-4">
+                Ni Lorem Ipsum
+              </div>
+              <div className="text-sm text-gray-600 mb-2">
+                {rekeningData.nomor}
+              </div>
+              <div className="text-sm text-gray-600 mb-4">
+                Rekening Operasional - {rekeningData.jenis}
+              </div>
+              <p className="text-sm text-gray-600">{rekeningData.deskripsi}</p>
+
+              {/* Tombol Aksi */}
+              <div className="absolute bottom-4 right-4 flex space-x-3 text-gray-400">
+                <button
+                  className="hover:text-blue-500 transition"
+                  onClick={() => openModal("edit")}
+                >
+                  <Edit className="w-4 h-4" />
+                </button>
+                <button
+                  className="hover:text-red-500 transition"
+                  onClick={() => setShowDelete(true)}
+                >
+                  <Trash2Icon className="w-5 h-5" />
+                </button>
+              </div>
             </div>
-            <div className="text-sm text-gray-600 mb-2">
-              0879898989898989
-            </div>
-            <div className="text-sm text-gray-600 mb-4">
-              Rekening Operasional - Bank BCA
-            </div>
-            <p className="text-sm text-gray-600">
-              Rekening untuk kebutuhan operasional perusahaan dan transaksi harian.
-            </p>
-            
-            {/* Tombol Hapus */}
-            <button className="absolute bottom-4 right-4 text-gray-400 hover:text-red-500 transition">
-              <Trash2Icon className="w-5 h-5" />
-            </button>
+          </div>
+
+          {/* Tabel kas */}
+          <div className="md:col-span-2">
+            <TabelKasDetail />
           </div>
         </div>
 
-        {/* Tabel Kas Detail - Sisi Kanan */}
-        <div className="flex-1">
-          <TabelKasDetail />
+        {/* Tombol kembali */}
+        <div className="text-right">
+          <Button
+            variant="primary"
+            className="px-6 py-2"
+            onClick={() => navigate(-1)}
+          >
+            Kembali
+          </Button>
         </div>
       </div>
 
-      <div className="text-right">
-        <Button
-          variant="primary"
-          className="px-6 py-2"
-          onClick={() => navigate(-1)} // tombol kembali
-        >
-          Kembali
-        </Button>
-      </div>
-    </div>
+      {/* Popup Transfer Dana */}
+      {modalType === "transfer" && (
+        <TransferDanaForm isOpen={true} onClose={closeModal} />
+      )}
+
+      {/* Popup Edit Rekening */}
+      {modalType === "edit" && (
+        <EditRekeningForm
+          isOpen={true}
+          onClose={closeModal}
+          existingData={rekeningData}
+        />
+      )}
+
+      {/* Popup Hapus */}
+      <DeleteConfirmationForm
+        isOpen={showDelete}
+        onClose={() => setShowDelete(false)}
+        onConfirm={handleDelete}
+      />
+    </>
   );
 }

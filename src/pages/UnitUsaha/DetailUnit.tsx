@@ -24,7 +24,7 @@ export default function DetailUnit() {
         <Button
           variant="primary"
           className="px-6 py-2"
-          onClick={() => navigate(-1)} // tombol kembali
+          onClick={() => navigate(-1)} 
         >
           Kembali
         </Button>

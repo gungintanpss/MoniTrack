@@ -1,6 +1,6 @@
 // pages/kas/CardKasDetail.tsx
 import { useNavigate, useParams } from "react-router";
-import { Trash2Icon } from "lucide-react";
+import { Trash2Icon, Edit } from "lucide-react";
 import Button from "../../components/ui/button/Button";
 import TabelKasDetail from "../../components/tables/BasicTables/TabelKasDetail";
 
@@ -55,9 +55,14 @@ export default function CardKasDetail() {
         </div>
 
         {/* Tabel Kas Detail - Sisi Kanan */}
-        <div className="flex-1">
-          <TabelKasDetail />
-        </div>
+        <div className="absolute bottom-4 right-4 flex space-x-3 text-gray-400">
+              <button className="hover:text-blue-500 transition">
+                <Edit className="w-4 h-4" />
+              </button>
+              <button className="hover:text-red-500 transition">
+                <Trash2Icon className="w-5 h-5" />
+              </button>
+          </div>
       </div>
 
       {/* Tombol Kembali */}
