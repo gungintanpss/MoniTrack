@@ -8,7 +8,6 @@ import {
 } from "../../ui/table";
 import { Eye, Edit, Trash2 } from "lucide-react";
 
-// Interface untuk data pengeluaran
 export interface PengeluaranData {
   tanggal: string;
   kategori: string;
@@ -23,6 +22,7 @@ export interface PengeluaranData {
 interface Props {
   onDelete: (id: string) => void;
   onEdit: (data: PengeluaranData) => void;
+  onView: (data: PengeluaranData) => void;
 }
 
 const tableData: PengeluaranData[] = [
@@ -134,7 +134,7 @@ const tableData: PengeluaranData[] = [
 
 const ITEMS_PER_PAGE = 10;
 
-export default function TabelPengeluaran({ onDelete, onEdit }: Props) {
+export default function TabelPengeluaran({ onDelete, onEdit, onView }: Props) {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(tableData.length / ITEMS_PER_PAGE);
 
@@ -228,7 +228,13 @@ export default function TabelPengeluaran({ onDelete, onEdit }: Props) {
                   </TableCell>
                   <TableCell className="px-5 py-4 text-start">
                     <div className="flex items-center gap-2">
-                      <button title="Lihat">
+                      <button 
+                        title="Lihat"
+                        onClick={() => {
+                          console.log(`Lihat detail baris ke-${actualIndex + 1}:`, item);
+                          onView(item);
+                        }}
+                      >
                         <Eye className="w-4 h-4 text-gray-600 hover:text-blue-500 dark:text-gray-300" />
                       </button>
                       <button

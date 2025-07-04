@@ -9,6 +9,7 @@ import { PlusIcon } from "../../icons";
 import AddDataTransaksi from "../../components/form/AddDataTransaksi";
 import HapusTransaksi from "../../components/form/HapusTransaksi";
 import EditDataPemasukan from "../../components/form/EditDataPemasukan";
+import LihatDataPemasukan from "../../components/form/LihatDataPemasukan"; // 👈 tambahkan ini
 
 export default function PemasukanPage() {
   const [search, setSearch] = useState("");
@@ -16,34 +17,40 @@ export default function PemasukanPage() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedTransactionId, setSelectedTransactionId] = useState<string | null>(null);
 
-const handleDelete = (id: string) => {
-  setSelectedTransactionId(id);
-  setShowDeleteModal(true);
-};
+  const handleDelete = (id: string) => {
+    setSelectedTransactionId(id);
+    setShowDeleteModal(true);
+  };
 
-const confirmDelete = () => {
-  if (selectedTransactionId !== null) {
-    console.log("Menghapus transaksi dengan ID:", selectedTransactionId);
-    // TODO: Hapus transaksi dari state atau API
-    setShowDeleteModal(false);
-    setSelectedTransactionId(null);
-  }
-};
+  const confirmDelete = () => {
+    if (selectedTransactionId !== null) {
+      console.log("Menghapus transaksi dengan ID:", selectedTransactionId);
+      // TODO: Hapus transaksi dari state atau API
+      setShowDeleteModal(false);
+      setSelectedTransactionId(null);
+    }
+  };
 
-const [showEditModal, setShowEditModal] = useState(false);
-const [editData, setEditData] = useState<PemasukanData | null>(null);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editData, setEditData] = useState<PemasukanData | null>(null);
 
-const handleEdit = (data: PemasukanData) => {
-  setEditData(data); 
-  setShowEditModal(true);
-};
+  const handleEdit = (data: PemasukanData) => {
+    setEditData(data);
+    setShowEditModal(true);
+  };
 
+  const [showDetailModal, setShowDetailModal] = useState(false);
+  const [detailData, setDetailData] = useState<PemasukanData | null>(null);
+
+  const handleView = (data: PemasukanData) => {
+    setDetailData(data);
+    setShowDetailModal(true);
+  };
 
   return (
     <>
       <PageMeta title="Pemasukan" description="Transaksi Pemasukan" />
 
-      {/* Header: Judul & Tombol Tambah */}
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-[22px] font-semibold text-[#3A3F63]">
           TRANSAKSI PEMASUKAN
@@ -59,12 +66,9 @@ const handleEdit = (data: PemasukanData) => {
         </Button>
       </div>
 
-      {/* Table */}
       <div className="space-y-6">
         <ComponentCard title="">
-          {/* Filter Section */}
           <div className="flex flex-wrap gap-4 items-center justify-start mb-6">
-            {/* Input Pencarian Invoice dengan Search Icon */}
             <div className="relative w-full max-w-sm">
               <Input
                 type="text"
@@ -74,7 +78,6 @@ const handleEdit = (data: PemasukanData) => {
                 className="pl-10 text-[#3A3F63]"
               />
               <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#3A3F63]">
-                {/* Search Icon (inline SVG) */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5"
@@ -92,7 +95,6 @@ const handleEdit = (data: PemasukanData) => {
               </div>
             </div>
 
-            {/* Date Picker */}
             <div className="w-full max-w-[220px]">
               <DatePicker
                 id="filter-date"
@@ -104,22 +106,22 @@ const handleEdit = (data: PemasukanData) => {
             </div>
           </div>
 
-          {/* Tabel */}
-          <TabelPemasukan onDelete={handleDelete} onEdit={handleEdit} />
+          <TabelPemasukan
+            onDelete={handleDelete}
+            onEdit={handleEdit}
+            onView={handleView}
+          />
         </ComponentCard>
       </div>
 
-      {/* Modal Tambah Transaksi */}
       <AddDataTransaksi isOpen={showModal} onClose={() => setShowModal(false)} />
 
-      {/* Modal Hapus Transaksi */}
       <HapusTransaksi
         isOpen={showDeleteModal}
         onConfirm={confirmDelete}
         onCancel={() => setShowDeleteModal(false)}
       />
 
-      {/* Modal Edit Transaksi */}
       {editData && (
         <EditDataPemasukan
           isOpen={showEditModal}
@@ -128,6 +130,13 @@ const handleEdit = (data: PemasukanData) => {
         />
       )}
 
+      {detailData && (
+        <LihatDataPemasukan
+          isOpen={showDetailModal}
+          onClose={() => setShowDetailModal(false)}
+          data={detailData}
+        />
+      )}
     </>
   );
 }

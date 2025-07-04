@@ -9,6 +9,7 @@ import { PlusIcon } from "../../icons";
 import AddDataTransaksi from "../../components/form/AddDataTransaksi";
 import HapusTransaksi from "../../components/form/HapusTransaksi";
 import EditDataPengeluaran from "../../components/form/EditDataPengeluaran";
+import LihatDataPengeluaran from "../../components/form/LihatDataPengeluaran";
 
 export default function PengeluaranPage() {
   const [search, setSearch] = useState("");
@@ -22,12 +23,11 @@ export default function PengeluaranPage() {
   };
 
   const confirmDelete = () => {
-  if (selectedTransactionId !== null) {
-    console.log("Menghapus transaksi dengan ID:", selectedTransactionId);
-    // TODO: Hapus transaksi dari state atau API
-    setShowDeleteModal(false);
-    setSelectedTransactionId(null);
-  }
+    if (selectedTransactionId !== null) {
+      console.log("Menghapus transaksi dengan ID:", selectedTransactionId);
+      setShowDeleteModal(false);
+      setSelectedTransactionId(null);
+    }
   };
 
   const [showEditModal, setShowEditModal] = useState(false);
@@ -36,6 +36,24 @@ export default function PengeluaranPage() {
   const handleEdit = (data: PengeluaranData) => {
     setEditData(data); 
     setShowEditModal(true);
+  };
+
+  const [showDetailModal, setShowDetailModal] = useState(false);
+  const [detailData, setDetailData] = useState<PengeluaranData | null>(null);
+
+  const handleView = (data: PengeluaranData) => {
+    console.log("Menampilkan detail transaksi:", data);
+    setDetailData(data);
+    setShowDetailModal(true);
+  };
+
+  const handleEditFromDetail = () => {
+    if (detailData) {
+      console.log("Edit dari detail modal:", detailData);
+      setShowDetailModal(false);
+      setEditData(detailData);
+      setShowEditModal(true);
+    }
   };
 
   return (
@@ -104,7 +122,11 @@ export default function PengeluaranPage() {
           </div>
 
           {/* Tabel */}
-          <TabelPengeluaran onDelete={handleDelete} onEdit={handleEdit} />
+          <TabelPengeluaran 
+            onDelete={handleDelete} 
+            onEdit={handleEdit} 
+            onView={handleView}
+          />
         </ComponentCard>
 
         {/* Modal Tambah Transaksi */}
@@ -124,9 +146,18 @@ export default function PengeluaranPage() {
             onClose={() => setShowEditModal(false)}
             data={editData}
           />
-          )}
+        )}
+
+        {/* Modal Detail Transaksi */}
+        {detailData && (
+          <LihatDataPengeluaran
+            isOpen={showDetailModal}
+            onClose={() => setShowDetailModal(false)}
+            data={detailData}
+            onEdit={handleEditFromDetail}
+          />
+        )}
       </div>
     </>
   );
 }
-
