@@ -22,7 +22,7 @@ export default function EditRekeningForm({ isOpen, onClose, existingData }: Prop
   const [nama, setNama] = useState(existingData.nama);
   const [jenis, setJenis] = useState(existingData.jenis);
   const [nomor, setNomor] = useState(existingData.nomor);
-  const [saldo] = useState(existingData.saldo); // saldo tidak bisa diedit
+  const [saldo] = useState(existingData.saldo); 
   const [deskripsi, setDeskripsi] = useState(existingData.deskripsi);
 
   const [showConfirm, setShowConfirm] = useState(false);
@@ -85,7 +85,6 @@ export default function EditRekeningForm({ isOpen, onClose, existingData }: Prop
         </div>
       </div>
 
-      {/* Konfirmasi Simpan */}
       <ConfirmationModal
         isOpen={showConfirm}
         title="Simpan Perubahan"

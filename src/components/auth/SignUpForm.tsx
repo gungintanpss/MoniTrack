@@ -22,7 +22,6 @@ export default function SignUpForm() {
           </div>
 
           <form>
-            {/* Added a div with space-y-6 specifically for the input fields */}
             <div className="space-y-6">
               <div>
                 <Label>
@@ -57,10 +56,8 @@ export default function SignUpForm() {
                 </div>
               </div>
             </div>
-            {/* End of input fields div */}
 
-            {/* Checkbox and terms/policy moved outside the space-y-6 input div */}
-            <div className="mt-6 flex items-center gap-3"> {/* Added mt-6 for spacing from password field */}
+            <div className="mt-6 flex items-center gap-3">
               <Checkbox
                 className="w-5 h-5"
                 checked={isChecked}
@@ -78,7 +75,7 @@ export default function SignUpForm() {
               </p>
             </div>
 
-            <div className="mt-6"> {/* Added mt-6 for spacing from the checkbox */}
+            <div className="mt-6">
               <button className="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600">
                 Sign Up
               </button>

@@ -21,10 +21,8 @@ interface Props {
 }
 
 export default function EditDataPengeluaran({ isOpen, onClose, data }: Props) {
-  // Debug log untuk melihat data yang diterima
   console.log('EditDataPengeluaran menerima data:', data);
   
-  // Fungsi untuk mengkonversi nama bulan ke angka
   const getMonthNumber = (monthName: string): string => {
     const months: { [key: string]: string } = {
       'Januari': '01', 'Februari': '02', 'Maret': '03', 'April': '04',
@@ -34,9 +32,8 @@ export default function EditDataPengeluaran({ isOpen, onClose, data }: Props) {
     return months[monthName] || '01';
   };
 
-  // Parse tanggal dengan benar
   const parsedDate = data.tanggal.split(" ");
-  console.log('Parsed date:', parsedDate); // Debug log
+  console.log('Parsed date:', parsedDate); 
   
   const [tanggal, setTanggal] = useState(parsedDate[0] || "");
   const [bulan, setBulan] = useState(getMonthNumber(parsedDate[1]) || "01");

@@ -1,5 +1,3 @@
-// File: components/ui/modal/TambahPemasukan.tsx
-
 import { useEffect } from "react";
 
 interface TambahPemasukanProps {

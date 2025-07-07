@@ -1,8 +1,8 @@
-import PageBreadcrumb from "../../components/common/PageBreadCrumb";
-import PageMeta from "../../components/common/PageMeta";
-import Table from "../../components/tables/BasicTables/Table";
-import { PlusIcon } from "../../icons";
-import Button from "../../components/ui/button/Button";
+import PageBreadcrumb from "../../common/PageBreadCrumb";
+import PageMeta from "../../common/PageMeta";
+import Table from "../../tables/BasicTables/Table";
+import { PlusIcon } from "../../../icons";
+import Button from "../../ui/button/Button";
 
 export default function TablePengeluaran() {
   return (
@@ -13,7 +13,6 @@ export default function TablePengeluaran() {
       />
       <PageBreadcrumb pageTitle="TRANSAKSI PENGELUARAN" />
 
-      {/* Header button saja */}
       <div className="flex justify-end mb-4 px-6">
         <Button
           size="sm"

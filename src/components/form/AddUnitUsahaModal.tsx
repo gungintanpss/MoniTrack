@@ -14,14 +14,13 @@ export default function AddUnitUsahaModal({ isOpen, onClose }: Props) {
   const [nama, setNama] = useState("");
   const [jenis, setJenis] = useState("");
   const [keterangan, setKeterangan] = useState("");
-  const [showConfirm, setShowConfirm] = useState(false); // untuk konfirmasi popup
+  const [showConfirm, setShowConfirm] = useState(false); 
 
   const handleSimpan = () => {
-    setShowConfirm(true); // munculkan popup konfirmasi
+    setShowConfirm(true); 
   };
 
   const handleConfirm = () => {
-    // Proses penyimpanan data di sini
     console.log({ nama, jenis, keterangan });
     setShowConfirm(false);
     onClose();

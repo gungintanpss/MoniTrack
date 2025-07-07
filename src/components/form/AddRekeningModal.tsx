@@ -30,7 +30,6 @@ export default function AddRekeningModal({ isOpen, onClose }: Props) {
 
   return (
     <>
-      {/* Main Modal */}
       <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm">
         <div className="w-full max-w-3xl bg-white p-8 rounded-xl shadow-2xl">
           <h2 className="text-xl font-bold text-center mb-6">Tambah Rekening</h2>
@@ -80,7 +79,6 @@ export default function AddRekeningModal({ isOpen, onClose }: Props) {
         </div>
       </div>
 
-      {/* Konfirmasi Popup */}
       <ConfirmationModal
         isOpen={showConfirm}
         title="Simpan Rekening"

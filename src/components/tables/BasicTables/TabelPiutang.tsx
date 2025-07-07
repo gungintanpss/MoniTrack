@@ -253,7 +253,6 @@ export default function TabelPiutang() {
             </TableBody>
           </Table>
         </div>
-        {/* Pagination */}
         <div className="flex items-center justify-between px-5 py-4 border-t border-gray-100 dark:border-white/[0.05]">
           <div className="flex items-center space-x-1">
             <button
@@ -280,7 +279,6 @@ export default function TabelPiutang() {
         </div>
       </div>
 
-      {/* MODAL DETAIL */}
       {showDetail && selectedData && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
           <div className="rounded-xl bg-white p-6 shadow-2xl w-full max-w-3xl">
@@ -335,7 +333,6 @@ export default function TabelPiutang() {
         </div>
       )}
 
-      {/* MODAL EDIT */}
       {showEdit && selectedData && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
           <div className="bg-white rounded-xl p-6 w-full max-w-4xl shadow-xl">
@@ -407,7 +404,6 @@ export default function TabelPiutang() {
         </div>
       )}
 
-      {/* Modal Konfirmasi */}
       {isConfirmOpen && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div className="bg-white rounded-xl p-6 w-full max-w-sm text-center shadow-2xl">
@@ -444,7 +440,6 @@ export default function TabelPiutang() {
         </div>
       )}
 
-      {/* MODAL HAPUS */}
       {showDeleteConfirm && selectedData && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-xl shadow-xl text-center w-full max-w-sm">

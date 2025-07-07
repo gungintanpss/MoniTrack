@@ -21,10 +21,8 @@ interface Props {
 }
 
 export default function EditDataTransaksi({ isOpen, onClose, data }: Props) {
-  // Debug log untuk melihat data yang diterima
   console.log('EditDataTransaksi menerima data:', data);
   
-  // Fungsi untuk mengkonversi nama bulan ke angka
   const getMonthNumber = (monthName: string): string => {
     const months: { [key: string]: string } = {
       'Januari': '01', 'Februari': '02', 'Maret': '03', 'April': '04',
@@ -34,10 +32,9 @@ export default function EditDataTransaksi({ isOpen, onClose, data }: Props) {
     return months[monthName] || '01';
   };
 
-  // Parse tanggal dengan benar
   const parsedDate = data.tanggal.split(" ");
-  console.log('Parsed date:', parsedDate); // Debug log
-  
+  console.log('Parsed date:', parsedDate); 
+
   const [tanggal, setTanggal] = useState(parsedDate[0] || "");
   const [bulan, setBulan] = useState(getMonthNumber(parsedDate[1]) || "01");
   const [tahun, setTahun] = useState(parsedDate[2] || "");
@@ -66,7 +63,7 @@ export default function EditDataTransaksi({ isOpen, onClose, data }: Props) {
   const unitUsahaOptions = [
     { value: "Unit Usaha 1", label: "Unit Usaha 1" },
     { value: "Unit Usaha 2", label: "Unit Usaha 2" },
-    { value: "Lorem Ipsum", label: "Lorem Ipsum" }, // jika data dummy kamu masih pakai ini
+    { value: "Lorem Ipsum", label: "Lorem Ipsum" }, 
   ];
 
   if (!isOpen) return null;

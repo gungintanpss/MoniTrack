@@ -20,7 +20,6 @@ export default function CardKasDetail() {
 
   return (
     <div className="px-6 py-4 space-y-6">
-      {/* Header atas */}
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
           MANAJEMEN KAS & REKENING
@@ -31,9 +30,7 @@ export default function CardKasDetail() {
         </Button>
       </div>
 
-      {/* Layout dengan Card di kiri dan Tabel di kanan */}
       <div className="flex gap-6">
-        {/* Kartu Rekening - Sisi Kiri */}
         <div className="w-80 flex-shrink-0">
           <div className="relative rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
             <div className="text-lg font-bold text-gray-800 mb-4">
@@ -47,14 +44,12 @@ export default function CardKasDetail() {
             </div>
             <p className="text-sm text-gray-600">{kasData.deskripsi}</p>
             
-            {/* Tombol Hapus */}
             <button className="absolute bottom-4 right-4 text-gray-400 hover:text-red-500 transition">
               <Trash2Icon className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Tabel Kas Detail - Sisi Kanan */}
         <div className="absolute bottom-4 right-4 flex space-x-3 text-gray-400">
               <button className="hover:text-blue-500 transition">
                 <Edit className="w-4 h-4" />
@@ -65,7 +60,6 @@ export default function CardKasDetail() {
           </div>
       </div>
 
-      {/* Tombol Kembali */}
       <div className="flex justify-end">
         <Button onClick={() => navigate("/manajemen-kas")} variant="outline">
           Kembali

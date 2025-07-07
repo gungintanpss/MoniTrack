@@ -108,7 +108,6 @@ export default function TabelLaporan() {
           </TableBody>
         </Table>
       </div>
-      {/* Pagination */}
       <div className="flex items-center justify-between px-5 py-4 border-t border-gray-100 dark:border-white/[0.05]">
         <div className="flex items-center space-x-1">
           <button

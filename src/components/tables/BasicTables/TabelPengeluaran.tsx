@@ -205,7 +205,7 @@ export default function TabelPengeluaran({ onDelete, onEdit, onView }: Props) {
 
           <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
             {currentData.map((item, idx) => {
-              const actualIndex = startIndex + idx; // Index sebenarnya dalam array original
+              const actualIndex = startIndex + idx; 
               return (
                 <TableRow key={actualIndex}>
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
@@ -262,9 +262,7 @@ export default function TabelPengeluaran({ onDelete, onEdit, onView }: Props) {
         </Table>
       </div>
 
-      {/* Pagination */}
       <div className="flex items-center justify-between px-5 py-4 border-t border-gray-100 dark:border-white/[0.05]">
-        {/* Pagination Controls */}
         <div className="flex items-center space-x-1">
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -285,7 +283,6 @@ export default function TabelPengeluaran({ onDelete, onEdit, onView }: Props) {
           </button>
         </div>
 
-        {/* Total Results */}
         <span className="text-sm text-gray-500 dark:text-gray-400">
           {tableData.length} Results
         </span>

@@ -22,7 +22,7 @@ export interface PemasukanData {
 interface Props {
   onDelete: (id: string) => void;
   onEdit: (data: PemasukanData) => void;
-  onView: (data: PemasukanData) => void; // 👈 Tambahkan ini
+  onView: (data: PemasukanData) => void; 
 }
 
 const tableData: PemasukanData[] = [

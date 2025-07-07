@@ -5,7 +5,7 @@ export default function CardUnit() {
 
   const data = [
     {
-      id: 1, // Tambahkan ID
+      id: 1,
       kategori: "F&B",
       deskripsi: "Lorem ipsum dolor sit amet...",
       status: "Aktif",

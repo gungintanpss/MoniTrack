@@ -21,7 +21,6 @@ export default function DeleteConfirmationForm({
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm">
       <div className="bg-white p-6 rounded-xl w-full max-w-sm text-center relative shadow-xl">
-        {/* Close button */}
         <button
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
           onClick={onClose}

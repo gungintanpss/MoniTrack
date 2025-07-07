@@ -64,7 +64,6 @@ export default function TabelKasDetail() {
         DETAIL KAS / REKENING
       </h3>
 
-      {/* Scroll hanya pada tabel */}
       <div className="overflow-x-auto w-full">
         <div className="min-w-[800px]">
           <Table className="w-full">

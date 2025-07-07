@@ -32,7 +32,6 @@ export default function CardUnitUsaha() {
           </p>
         </div>
 
-        {/* Tombol hapus */}
         <button
           className="absolute bottom-4 right-4 text-gray-400 hover:text-red-500 transition"
           onClick={() => setShowDelete(true)}
@@ -41,7 +40,6 @@ export default function CardUnitUsaha() {
         </button>
       </div>
 
-      {/* Popup hapus */}
       <DeleteConfirmationForm
         isOpen={showDelete}
         onClose={() => setShowDelete(false)}
