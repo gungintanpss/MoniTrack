@@ -39,9 +39,11 @@ export default function LaporanPage() {
 
   return (
     <>
-      <PageMeta title="Laporan Keuangan" description="Dashboard Laporan Keuangan" />
-
-      {/* Header */}
+      <PageMeta
+        title="MoniTrack"
+        description=""
+      />
+      
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-[22px] font-semibold text-[#3A3F63]">LAPORAN KEUANGAN</h1>
         <Button variant="primary" className="px-5 py-2" onClick={openExportModal}>
@@ -49,7 +51,6 @@ export default function LaporanPage() {
         </Button>
       </div>
 
-      {/* Filter */}
       <div className="space-y-6">
         <ComponentCard title="">
           <div className="flex flex-wrap gap-4 items-center justify-start mb-6">
@@ -86,12 +87,10 @@ export default function LaporanPage() {
             </div>
           </div>
 
-          {/* Table */}
           <TabelLaporan />
         </ComponentCard>
       </div>
 
-      {/* Modal Ekspor */}
       {isExportOpen && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div className="bg-white rounded-xl p-8 w-full max-w-3xl shadow-xl">
@@ -158,7 +157,6 @@ export default function LaporanPage() {
         </div>
       )}
 
-      {/* Modal Konfirmasi Unduh */}
       {isConfirmOpen && (
         <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div className="bg-white rounded-xl p-6 w-full max-w-md text-center shadow-xl">

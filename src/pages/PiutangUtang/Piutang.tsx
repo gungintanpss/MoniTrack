@@ -24,9 +24,11 @@ export default function PiutangPage() {
 
   return (
     <>
-      <PageMeta title="Manajemen Piutang" description="Dashboard Piutang" />
-
-      {/* Modal Tambah Piutang */}
+      <PageMeta
+        title="MoniTrack"
+        description=""
+      />
+      
       {isOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div className="rounded-xl bg-white p-6 shadow-2xl w-full max-w-3xl">
@@ -87,7 +89,7 @@ export default function PiutangPage() {
                 Batal
               </button>
               <button
-                onClick={() => setIsConfirmOpen(true)} // ✅ buka modal konfirmasi
+                onClick={() => setIsConfirmOpen(true)} 
                 className="rounded-full px-6 py-2 bg-blue-500 text-white hover:bg-blue-600"
               >
                 Simpan
@@ -97,7 +99,6 @@ export default function PiutangPage() {
         </div>
       )}
 
-      {/* Modal Konfirmasi */}
       {isConfirmOpen && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div className="bg-white rounded-xl p-6 w-full max-w-sm text-center shadow-2xl">
@@ -117,7 +118,7 @@ export default function PiutangPage() {
               <button
                 onClick={() => {
                   setIsConfirmOpen(false);
-                  setIsOpen(false); // ✅ tutup modal form juga
+                  setIsOpen(false); 
                 }}
                 className="rounded-full px-6 py-2 bg-blue-500 text-white hover:bg-blue-600"
               >
@@ -134,7 +135,6 @@ export default function PiutangPage() {
         </div>
       )}
 
-      {/* Header: Judul & Tombol Tambah */}
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-[22px] font-semibold text-[#3A3F63]">
           MANAJEMEN PIUTANG
@@ -150,7 +150,6 @@ export default function PiutangPage() {
         </Button>
       </div>
 
-      {/* Table */}
       <div className="space-y-6">
         <ComponentCard title="">
           <div className="flex flex-wrap gap-4 items-center justify-start mb-6">

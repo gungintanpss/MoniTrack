@@ -9,7 +9,7 @@ import { PlusIcon } from "../../icons";
 import AddDataTransaksi from "../../components/form/AddDataTransaksi";
 import HapusTransaksi from "../../components/form/HapusTransaksi";
 import EditDataPemasukan from "../../components/form/EditDataPemasukan";
-import LihatDataPemasukan from "../../components/form/LihatDataPemasukan"; // 👈 tambahkan ini
+import LihatDataPemasukan from "../../components/form/LihatDataPemasukan"; 
 
 export default function PemasukanPage() {
   const [search, setSearch] = useState("");
@@ -25,7 +25,6 @@ export default function PemasukanPage() {
   const confirmDelete = () => {
     if (selectedTransactionId !== null) {
       console.log("Menghapus transaksi dengan ID:", selectedTransactionId);
-      // TODO: Hapus transaksi dari state atau API
       setShowDeleteModal(false);
       setSelectedTransactionId(null);
     }
@@ -49,8 +48,11 @@ export default function PemasukanPage() {
 
   return (
     <>
-      <PageMeta title="Pemasukan" description="Transaksi Pemasukan" />
-
+      <PageMeta
+        title="MoniTrack"
+        description=""
+      />
+      
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-[22px] font-semibold text-[#3A3F63]">
           TRANSAKSI PEMASUKAN

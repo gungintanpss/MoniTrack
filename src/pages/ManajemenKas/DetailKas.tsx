@@ -7,6 +7,7 @@ import TransferDanaForm from "../../components/form/TransferDanaForm";
 import EditRekeningForm from "../../components/form/EditRekeningForm";
 import DeleteConfirmationForm from "../../components/form/DeleteConfirmationForm";
 import { PlusIcon } from "../../icons";
+import PageMeta from "../../components/common/PageMeta";
 
 export default function DetailKas() {
   const { id } = useParams();
@@ -34,8 +35,12 @@ export default function DetailKas() {
 
   return (
     <>
+      <PageMeta
+        title="MoniTrack"
+        description=""
+      />
+      
       <div className="px-4 md:px-10 py-8 space-y-6">
-        {/* Header + Tombol Transfer Dana */}
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-semibold text-[#3A3F63]">
             MANAJEMEN KAS & REKENING
@@ -52,9 +57,7 @@ export default function DetailKas() {
           </Button>
         </div>
 
-        {/* Layout dengan grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Kartu informasi kas */}
           <div className="md:col-span-1">
             <div className="relative rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
               <div className="text-lg font-bold text-gray-800 mb-4">
@@ -68,7 +71,6 @@ export default function DetailKas() {
               </div>
               <p className="text-sm text-gray-600">{rekeningData.deskripsi}</p>
 
-              {/* Tombol Aksi */}
               <div className="absolute bottom-4 right-4 flex space-x-3 text-gray-400">
                 <button
                   className="hover:text-blue-500 transition"
@@ -86,13 +88,11 @@ export default function DetailKas() {
             </div>
           </div>
 
-          {/* Tabel kas */}
           <div className="md:col-span-2">
             <TabelKasDetail />
           </div>
         </div>
 
-        {/* Tombol kembali */}
         <div className="text-right">
           <Button
             variant="primary"
@@ -104,12 +104,10 @@ export default function DetailKas() {
         </div>
       </div>
 
-      {/* Popup Transfer Dana */}
       {modalType === "transfer" && (
         <TransferDanaForm isOpen={true} onClose={closeModal} />
       )}
 
-      {/* Popup Edit Rekening */}
       {modalType === "edit" && (
         <EditRekeningForm
           isOpen={true}
@@ -118,7 +116,6 @@ export default function DetailKas() {
         />
       )}
 
-      {/* Popup Hapus */}
       <DeleteConfirmationForm
         isOpen={showDelete}
         onClose={() => setShowDelete(false)}

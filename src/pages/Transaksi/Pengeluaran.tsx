@@ -58,9 +58,11 @@ export default function PengeluaranPage() {
 
   return (
     <>
-      <PageMeta title="Pengeluaran" description="Transaksi Pengeluaran" />
-
-      {/* Header: Judul & Tombol Tambah */}
+      <PageMeta
+        title="MoniTrack"
+        description=""
+      />
+      
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-[22px] font-semibold text-[#3A3F63]">
           TRANSAKSI PENGELUARAN
@@ -76,12 +78,9 @@ export default function PengeluaranPage() {
         </Button>
       </div>
 
-      {/* Table */}
       <div className="space-y-6">
         <ComponentCard title="">
-          {/* Filter Section */}
           <div className="flex flex-wrap gap-4 items-center justify-start mb-6">
-            {/* Input Pencarian Invoice dengan Search Icon */}
             <div className="relative w-full max-w-sm">
               <Input
                 type="text"
@@ -91,7 +90,6 @@ export default function PengeluaranPage() {
                 className="pl-10 text-[#3A3F63]"
               />
               <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#3A3F63]">
-                {/* Search Icon (inline SVG) */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5"
@@ -109,7 +107,6 @@ export default function PengeluaranPage() {
               </div>
             </div>
 
-            {/* Date Picker */}
             <div className="w-full max-w-[220px]">
               <DatePicker
                 id="filter-date"
@@ -121,7 +118,6 @@ export default function PengeluaranPage() {
             </div>
           </div>
 
-          {/* Tabel */}
           <TabelPengeluaran 
             onDelete={handleDelete} 
             onEdit={handleEdit} 
@@ -129,17 +125,14 @@ export default function PengeluaranPage() {
           />
         </ComponentCard>
 
-        {/* Modal Tambah Transaksi */}
         <AddDataTransaksi isOpen={showModal} onClose={() => setShowModal(false)} />
 
-        {/* Modal Hapus Transaksi */}
         <HapusTransaksi
           isOpen={showDeleteModal}
           onConfirm={confirmDelete}
           onCancel={() => setShowDeleteModal(false)}
         />
-
-        {/* Modal Edit Transaksi */}        
+     
         {editData && (
           <EditDataPengeluaran
             isOpen={showEditModal}
@@ -148,7 +141,6 @@ export default function PengeluaranPage() {
           />
         )}
 
-        {/* Modal Detail Transaksi */}
         {detailData && (
           <LihatDataPengeluaran
             isOpen={showDetailModal}

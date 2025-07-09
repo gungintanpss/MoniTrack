@@ -1,4 +1,3 @@
-import React from "react";
 import ThemeTogglerTwo from "../../components/common/ThemeTogglerTwo";
 
 export default function AuthLayout({
